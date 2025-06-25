@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0, viewport-fit=cover"
+        />
+        <title>The Adventure of Pixie</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <div id="game-container">
+            <canvas id="game-canvas" width="800" height="600"></canvas>
+
+            <div id="ui-overlay">
+                <div id="score">SCORE: 00000</div>
+                <div id="coins">🟡 COINS: 00</div>
+                <div id="level">LEVEL: 1</div>
+                <div id="lives">❤️ LIVES: 3</div>
+            </div>
+
+            <div id="level-name">FOREST OF WONDERS</div>
+
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar"></div>
+            </div>
+
+            <div id="start-screen">
+                <h1>THE ADVENTURE OF PIXIE</h1>
+                <div class="character">
+                    <div
+                        class="knight floating"
+                        style="animation-delay: 0s"
+                    ></div>
+                    <div
+                        class="dragon floating"
+                        style="animation-delay: 0.5s"
+                    ></div>
+                    <div
+                        class="coin floating pulse"
+                        style="animation-delay: 1s"
+                    ></div>
+                </div>
+                <p>8 УРОВНЕЙ ПЛАТФОРМЕННОГО ПРИКЛЮЧЕНИЯ</p>
+                <div class="controls">
+                    <div class="key">
+                        <div class="key-label">ДВИГАТЬСЯ</div>
+                        <div class="key-value">← →</div>
+                    </div>
+                    <div class="key">
+                        <div class="key-label">ПРЫЖОК</div>
+                        <div class="key-value">SPACE</div>
+                    </div>
+                    <div class="key">
+                        <div class="key-label">БЕГАТЬ</div>
+                        <div class="key-value">SHIFT</div>
+                    </div>
+                </div>
+                <button
+                    class="pixel-btn"
+                    id="start-btn"
+                    style="display: none !important"
+                >
+                    НАЧАТЬ ПРИКЛЮЧЕНИЕ
+                </button>
+                <!-- <button class="pixel-btn" id="level-select-btn">
+                    ВЫБОР УРОВНЯ
+                </button> -->
+
+                <button class="pixel-btn" id="level-select-btn">
+                    НАЧАТЬ ПРИКЛЮЧЕНИЕ
+                </button>
+            </div>
+
+            <div id="level-select">
+                <h1>ВЫБЕРИТЕ УРОВЕНЬ</h1>
+                <div class="level-grid">
+                    <div class="level-card level-card-1" data-level="1">
+                        <div class="level-title">ЛЕС</div>
+                    </div>
+                    <div class="level-card level-card-2" data-level="2">
+                        <div class="level-title">ПУСТЫНЯ</div>
+                    </div>
+                    <div class="level-card level-card-3" data-level="3">
+                        <div class="level-title">ГОРА</div>
+                    </div>
+                    <div class="level-card level-card-4" data-level="4">
+                        <div class="level-title">ОКЕАН</div>
+                    </div>
+                    <div class="level-card level-card-5" data-level="5">
+                        <div class="level-title">ВУЛКАН</div>
+                    </div>
+                    <div class="level-card level-card-6" data-level="6">
+                        <div class="level-title">ЛЕДЯНАЯ ПЕЩЕРА</div>
+                    </div>
+                    <div class="level-card level-card-7" data-level="7">
+                        <div class="level-title">ЗОНА ЛАВЫ</div>
+                    </div>
+                    <div class="level-card level-card-8" data-level="8">
+                        <div class="level-title">ЗАМОК</div>
+                    </div>
+                </div>
+                <button class="pixel-btn" id="back-to-menu">
+                    ВЕРНУТЬСЯ В МЕНЮ
+                </button>
+            </div>
+
+            <div id="level-complete">
+                <h1>LEVEL COMPLETE!</h1>
+                <p>Вы собрали сокровище!</p>
+                <div
+                    class="coin floating"
+                    style="width: 80px; height: 80px"
+                ></div>
+                <p id="level-score">SCORE: 00000</p>
+                <button class="pixel-btn" id="next-level-btn">
+                    СЛЕДУЮЩИЙ УРОВЕНЬ
+                </button>
+                <button class="pixel-btn" id="select-level-btn">
+                    ВЫБОР УРОВНЯ
+                </button>
+            </div>
+
+            <div id="game-over">
+                <h1>GAME OVER</h1>
+                <p>Ваше приключение закончилось...</p>
+                <p id="final-score">YOUR SCORE: 00000</p>
+                <button class="pixel-btn" id="restart-btn">
+                    ПОПРОБУЙТЕ ЕЩЕ РАЗ
+                </button>
+                <button class="pixel-btn" id="menu-btn">ГЛАВНОЕ МЕНЮ</button>
+            </div>
+
+            <button id="sound-toggle">ЗВУК: ON</button>
+            <button id="main-menu-return-btn">МЕНЮ</button>
+            <div id="credit">🖥️ Ayon😶</div>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
+</html>
