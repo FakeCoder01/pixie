@@ -2431,7 +2431,7 @@ function drawPlayer() {
   if (keys["Shift"]) {
     for (let i = 2; i >= 0; i--) {
       const alpha = 0.3 - i * 0.1;
-      const trailX = pX - player.velocity.x * (i + 1) * 2;
+      const trailX = pX - player.velX * (i + 1) * 2;
       const trailY = pY + pHeight / 2;
 
       ctx.beginPath();
