@@ -173,7 +173,10 @@ const MAX_Y = 500; // Lowest point a platform can generate
 
 // Set sound volume
 for (const key in sounds) {
-  sounds[key].volume = 0.3;
+  sounds[key].volume = 0.4;
+  if (key === "coin") {
+    sounds[key].volume = 0.5;
+  }
 }
 
 // Initialize the game
@@ -2519,6 +2522,67 @@ function updateUI() {
   livesDisplay.textContent = `❤️ LIVES: ${lives} `;
   levelDisplay.textContent = `LEVEL: ${currentLevel}`;
 }
+
+const modalOverlay = document.getElementById("retroModalOverlay");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const musicToggleButton = document.getElementById("musicToggleButton");
+const musicIcon = musicToggleButton.querySelector(".music-icon");
+let isMusicOn = false;
+
+// Function to open the modal
+function openModal() {
+  modalOverlay.classList.add("active");
+}
+
+// Function to close the modal
+function closeModal() {
+  modalOverlay.classList.remove("active");
+}
+
+// Event listener for close button
+closeModalBtn.addEventListener("click", closeModal);
+
+// Event listener for overlay click to close modal (optional, but common)
+modalOverlay.addEventListener("click", (event) => {
+  if (event.target === modalOverlay) {
+    closeModal();
+  }
+});
+
+// Event listener for music toggle button
+musicToggleButton.addEventListener("click", () => {
+  isMusicOn = !isMusicOn; // Toggle state
+  if (isMusicOn) {
+    musicToggleButton.classList.add("on");
+    musicToggleButton.innerHTML =
+      '<span class="music-icon">&#x266B;</span> ЗВУК: ON';
+    soundEnabled = !soundEnabled;
+    soundToggle.textContent = `ЗВУК: ${soundEnabled ? "ON" : "OFF"}`;
+    if (soundEnabled) {
+      sounds.click.play();
+      sounds.background.play();
+    } else {
+      sounds.background.pause();
+    }
+  } else {
+    musicToggleButton.classList.remove("on");
+    musicToggleButton.innerHTML =
+      '<span class="music-icon">&#x266B;</span> ЗВУК: OFF';
+
+    soundEnabled = !soundEnabled;
+    soundToggle.textContent = `ЗВУК: ${soundEnabled ? "ON" : "OFF"}`;
+    if (soundEnabled) {
+      sounds.click.play();
+      sounds.background.play();
+    } else {
+      sounds.background.pause();
+    }
+  }
+});
+
+window.addEventListener("load", () => {
+  openModal();
+});
 
 // Initialize the game
 init();
