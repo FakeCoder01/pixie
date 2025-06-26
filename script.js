@@ -30,7 +30,7 @@ let score = 0;
 let coins = 0;
 let lives = 3;
 let currentLevel = 1;
-let soundEnabled = true;
+let soundEnabled = false;
 let worldWidth = 8000;
 let cameraOffset = 0;
 let gameTime = 0;
@@ -187,7 +187,7 @@ function init() {
 
   // Start background music
   sounds.background.loop = true;
-  sounds.background.play();
+  if (soundEnabled) sounds.background.play();
 }
 
 function setupEventListeners() {
@@ -200,20 +200,20 @@ function setupEventListeners() {
   });
 
   startBtn.addEventListener("click", () => {
-    sounds.click.play();
+    if (soundEnabled) sounds.click.play();
     startScreen.style.display = "none";
     startGame();
   });
 
   levelSelectBtn.addEventListener("click", () => {
-    sounds.click.play();
+    if (soundEnabled) sounds.click.play();
     startScreen.style.display = "none";
     levelSelectScreen.style.display = "flex";
   });
 
   levelCards.forEach((card) => {
     card.addEventListener("click", () => {
-      sounds.click.play();
+      if (soundEnabled) sounds.click.play();
       const level = parseInt(card.dataset.level);
       currentLevel = level;
       levelSelectScreen.style.display = "none";
@@ -222,7 +222,7 @@ function setupEventListeners() {
   });
 
   nextLevelBtn.addEventListener("click", () => {
-    sounds.click.play();
+    if (soundEnabled) sounds.click.play();
     levelCompleteScreen.style.display = "none";
     currentLevel++;
     if (currentLevel > 8) currentLevel = 1;
@@ -233,25 +233,25 @@ function setupEventListeners() {
   });
 
   selectLevelBtn.addEventListener("click", () => {
-    sounds.click.play();
+    if (soundEnabled) sounds.click.play();
     levelCompleteScreen.style.display = "none";
     levelSelectScreen.style.display = "flex";
   });
 
   restartBtn.addEventListener("click", () => {
-    sounds.click.play();
+    if (soundEnabled) sounds.click.play();
     gameOverScreen.style.display = "none";
     startGame();
   });
 
   menuBtn.addEventListener("click", () => {
-    sounds.click.play();
+    if (soundEnabled) sounds.click.play();
     gameOverScreen.style.display = "none";
     startScreen.style.display = "flex";
   });
 
   mainMenuReturnBtn.addEventListener("click", () => {
-    sounds.click.play();
+    if (soundEnabled) sounds.click.play();
     levelSelectScreen.style.display = "none";
     gameOverScreen.style.display = "none";
     levelCompleteScreen.style.display = "none";
@@ -260,13 +260,13 @@ function setupEventListeners() {
   });
 
   backToMenuBtn.addEventListener("click", () => {
-    sounds.click.play();
+    if (soundEnabled) sounds.click.play();
     levelSelectScreen.style.display = "none";
     startScreen.style.display = "flex";
   });
 
   soundToggle.addEventListener("click", () => {
-    sounds.click.play();
+    if (soundEnabled) sounds.click.play();
     soundEnabled = !soundEnabled;
     soundToggle.textContent = `ЗВУК: ${soundEnabled ? "ON" : "OFF"}`;
     if (soundEnabled) {
