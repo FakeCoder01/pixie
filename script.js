@@ -23,8 +23,13 @@ const mainMenuReturnBtn = document.getElementById("main-menu-return-btn");
 const progressBar = document.getElementById("progress-bar");
 const levelCards = document.querySelectorAll(".level-card");
 const levelName = document.getElementById("level-name");
+const modalOverlay = document.getElementById("retroModalOverlay");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const musicToggleButton = document.getElementById("musicToggleButton");
+const musicIcon = musicToggleButton.querySelector(".music-icon");
 
 // Game state
+let isMusicOn = false;
 let gameRunning = false;
 let score = 0;
 let coins = 0;
@@ -2522,12 +2527,6 @@ function updateUI() {
   livesDisplay.textContent = `❤️ LIVES: ${lives} `;
   levelDisplay.textContent = `LEVEL: ${currentLevel}`;
 }
-
-const modalOverlay = document.getElementById("retroModalOverlay");
-const closeModalBtn = document.getElementById("closeModalBtn");
-const musicToggleButton = document.getElementById("musicToggleButton");
-const musicIcon = musicToggleButton.querySelector(".music-icon");
-let isMusicOn = false;
 
 // Function to open the modal
 function openModal() {

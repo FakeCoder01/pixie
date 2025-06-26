@@ -404,3 +404,159 @@ p {
     font-size: 10px;
     color: #d6d6d6;
 }
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensure it's on top */
+    opacity: 0;
+    visibility: hidden;
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Modal Container - main box */
+.modal-container {
+    background-color: #1a0a3b; /* Darker purple for modal background */
+    border: 4px solid #ccff00; /* Neon yellow-green border */
+    border-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"><rect x="0" y="0" width="16" height="16" fill="%231a0a3b"/><rect x="0" y="0" width="16" height="4" fill="%23ccff00"/><rect x="0" y="12" width="16" height="4" fill="%23ccff00"/><rect x="0" y="4" width="4" height="8" fill="%23ccff00"/><rect x="12" y="4" width="4" height="8" fill="%23ccff00"/></svg>')
+        4 repeat; /* Pixelated border effect */
+    box-shadow: 8px 8px 0px 0px #00ffcc; /* Neon cyan pixel shadow */
+    padding: 20px;
+    position: relative;
+    max-width: 90%;
+    width: 400px;
+    box-sizing: border-box;
+    transform: scale(0.8);
+    opacity: 0;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.modal-overlay.active .modal-container {
+    transform: scale(1);
+    opacity: 1;
+}
+
+/* Modal Header */
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px dashed #00ffcc; /* Neon cyan dashed line */
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.modal-title {
+    color: #ff00ff; /* Neon pink title */
+    font-size: 1.5em;
+    text-shadow: 2px 2px #00ffcc; /* Pixel shadow for title */
+}
+
+/* Close Button */
+.close-button {
+    background-color: #ff0055; /* Reddish pink */
+    color: #ffffff; /* White text */
+    border: 2px solid #ffffff;
+    font-family: "Press Start 2P", cursive;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    cursor: pointer;
+    box-shadow: 3px 3px 0px 0px #880022; /* Darker red shadow */
+    transition:
+        background-color 0.1s ease,
+        box-shadow 0.1s ease;
+    -webkit-font-smoothing: none; /* For sharper pixel fonts */
+    image-rendering: pixelated; /* Ensure pixelation for button */
+}
+
+.close-button:hover {
+    background-color: #ff3377;
+    box-shadow: 2px 2px 0px 0px #880022;
+}
+
+.close-button:active {
+    background-color: #cc0044;
+    box-shadow: 1px 1px 0px 0px #880022;
+    transform: translate(2px, 2px); /* Click effect */
+}
+
+/* Modal Body - content area */
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    text-align: center;
+}
+
+.modal-body p {
+    font-size: 0.9em;
+    color: #ccff00;
+}
+
+/* Music Toggle Button */
+.music-toggle-button {
+    background-color: #0088ff; /* Blue */
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    font-family: "Press Start 2P", cursive;
+    font-size: 1.1em;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 4px 4px 0px 0px #0044aa; /* Darker blue shadow */
+    transition:
+        background-color 0.1s ease,
+        box-shadow 0.1s ease,
+        transform 0.1s ease;
+    -webkit-font-smoothing: none;
+    image-rendering: pixelated;
+}
+
+.music-toggle-button:hover {
+    background-color: #33aaff;
+    box-shadow: 3px 3px 0px 0px #0044aa;
+}
+
+.music-toggle-button:active {
+    background-color: #0066cc;
+    box-shadow: 1px 1px 0px 0px #0044aa;
+    transform: translate(3px, 3px);
+}
+
+/* Music Toggle ON state specific styling */
+.music-toggle-button.on {
+    background-color: #00e676; /* Bright green */
+    box-shadow: 4px 4px 0px 0px #008c48; /* Darker green shadow */
+}
+
+.music-toggle-button.on:hover {
+    background-color: #33ff99;
+    box-shadow: 3px 3px 0px 0px #008c48;
+}
+
+.music-toggle-button.on:active {
+    background-color: #00b359;
+    box-shadow: 1px 1px 0px 0px #008c48;
+    transform: translate(3px, 3px);
+}
+
+/* Placeholder for potential music icon */
+.music-icon {
+    margin-right: 8px;
+}
